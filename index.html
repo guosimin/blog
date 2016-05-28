@@ -41,7 +41,7 @@ layout: default
             <div class="clear block-style1-wrap">
                 {% for post in site.posts %}
                     <section class="block-style1">
-                        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">
+                        <a href="{{ '/page.html' | prepend: site.baseurl }}">
                             <header>
                                 <h3 class="name">{{post.title}}</h3>
                                 <p class="from"> 整理于 {{ post.date | date: "%Y %D" }}</p>
