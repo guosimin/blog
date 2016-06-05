@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj1 = {
+        0:"000",
+        1:"111",
+        2:"222",
+        length:3
+    }
+    window.makeArray = function(array) {
+        var ret = [];
+        if(array!=null){
+            var i= array.length;
+            if(i==null||typeof array ==="string"){
+                ret = [];
+            }else{
+                while (i){
+                    ret[--i] = array[i];
+                }
+            }
+        }
+        return ret;
+    }
+    console.log(makeArray(obj1));
+    console.log(makeArray(22));
+</script>
+</body>
+</html>
