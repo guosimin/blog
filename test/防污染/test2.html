@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-1.12.4.js"></script>
+</head>
+<body>
+    <div id="test"></div>
+    <script>
+        window.$ = "bb";
+        (function ($) {
+            $("#test").html("test");
+        })(window.jQuery);
+    </script>
+</body>
+</html>

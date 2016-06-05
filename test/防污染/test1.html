@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.$ = function () {
+            return "36";
+        }
+    </script>
+    <script src="../jquery-1.12.4.js"></script>
+</head>
+<body>
+<div id="test"></div>
+<script>
+    var $$=$.noConflict();
+    alert(window.$());
+    $$("#test").html("bbbbbbbbb");
+</script>
+</body>
+</html>
