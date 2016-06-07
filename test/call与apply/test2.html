@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //(-*-)看他介绍，apply好似同call差不多，就是传参的时候不一样，apply传递的是数组
+
+    function a(obj1,obj2,obj3) {
+        console.log(obj2);
+    }
+    function b(obj1,obj2,obj3) {
+       console.log(arguments);
+    }
+
+    //[]和b
+    a.call(new b(),"a","b","c");
+
+    //["a", "b", "c"] 和b
+    a.call(new b("a","b","c"),"a","b","c");
+
+    //["a", "b", "c"]和b
+    a.apply(new b("a","b","c"),["a","b","c"]);
+</script>
+</body>
+</html>
