@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //constructor 属性返回对创建此对象的数组函数的引用。
+    //简称你new了一个对象，然后用constructor可以返回出改对象的具体方法（引用）
+
+    function A(name){
+        this.name = name;
+    }
+    var a1 = new A("aa1");
+    var a2 = new A("aa2");
+
+
+    console.log(a1.constructor);
+</script>
+</body>
+</html>

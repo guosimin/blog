@@ -1,0 +1,10 @@
+###JavaScript对象
+1.Array
+2.Object
+3.Math
+4.Boolean
+5.Date
+6.RegExp
+7.Number
+8.Global
+9.String
