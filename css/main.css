@@ -297,6 +297,7 @@ input[type="submit"] {
 }
 .side .list-style1-wrap {
     font-size: 13px;
+    margin-bottom: 40px;
 }
 .side .list-style1-wrap li {
     padding: 5px 0;

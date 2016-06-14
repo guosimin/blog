@@ -1,0 +1,28 @@
+<article class="fl main">
+    <header class="title">
+        <h2>
+            <span class="box"></span>
+            <span>前端技术</span>
+        </h2>
+    </header>
+    <div class="clear block-style1-wrap">
+        {% for post in site.posts %}
+        <section class="block-style1">
+            <a href="{{ site.baseurl }}{{ post.url }}">
+                <header>
+                    <h3 class="name">{{post.title}}</h3>
+                    <p class="from"> 整理于 {{ post.date | date: "%Y %D" }}</p>
+                </header>
+                <div class="con-word">
+                    <p>{{post.categories}}</p>
+                </div>
+            </a>
+            <footer class="label-style1-warp">
+                {% for tag in post.tags%}
+                <a>{{tag}}</a>
+                {% endfor %}
+            </footer>
+        </section>
+        {% endfor %}
+    </div>
+</article>
