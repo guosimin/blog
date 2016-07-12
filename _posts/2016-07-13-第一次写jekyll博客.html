@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "第一次用jekyll搭建博客"
+date:    2016-07-13 00:19:13 +0800
+categories: "磨磨蹭蹭倒弄了好久，才初步有了此博客，而写下这篇博文的时候，我才刚大致写完文章详情页，后..."
+tags: ["jekyll","博客"]
+---
+
+<div>
+    <p>磨磨蹭蹭倒弄了好久，才初步有了此博客，而写下这篇博文的时候，我才刚大致写完文章详情页，后面估计还有好一段东西要写，不过只能慢慢了，毕竟最近工作有点多。</p>
+    <div>说道第一次搭建这个遇到什么坑，那就简单说说吧：</div>
+    <div class="keng">
+        <p>a.路径问题，因为我在github上面文件不是自己放在根目录的，而是blog项目目录下面，所以上传到github后样式有问题了</p>
+        <p>解决办法：</p>
+        <p class="text-orange">配置_config.yml里面的baseurl路径为"/blog"</p>
+    </div>
+    <div class="keng">
+        <p>b.文章跳转到详情页地址</p>
+        <p>解决办法：</p>
+        <p class="text-orange">如果不在_config.yml配置，容易出现报错，特别是我还配置了描述在文章中，所以最好配置一下，本博客文章地址配置：permalink: /:title.html，然后页面上加上绝对地址给它:{ { site.baseurl } }{ { post.url } }或{ { post.url | prepend: site.baseurl} }</p>
+    </div>
+</div>
