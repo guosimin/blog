@@ -1,12 +1,15 @@
 <!--主页-->
 <!DOCTYPE html>
 <html>
-  <!--引入样式-->
-  {% include head.html %}
-  <body>
+<!--引入样式-->
+{% include head.html %}
+<body>
     <!--引入头部-->
     {% include header.html %}
     <!--引入内容-->
     {{ content }}
-  </body>
+
+    <!--引入底部-->
+    {% include script.html %}
+</body>
 </html>
