@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- angular -->
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <!--underscore-->
+    <script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js"></script>
+</head>
+<body>
+    <div ng-controller="mainCtrl">
+        <ul ng-repeat="item in objArray">
+            <li ng-style="{{item.style}}">
+                <label>
+                    <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectId.indexOf(item.id)!=-1">
+                    {{item.name}}
+                    id:{{item.id}} - parentId:{{item.parentId}}
+                </label>
+            </li>
+        </ul>
+        选中的：
+
+        <div>
+            <ul>
+                <li ng-repeat="item in selectItem">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+        选中的最终节点：
+
+        <div>
+            <ul>
+                <li ng-repeat="item in selectItem" ng-hide="item.node">
+                    {{item.name}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<script>
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ["app"]);
+    });
+    var app = angular.module("app",[]);
+
+
+    app.controller('mainCtrl',['$scope',function ($scope) {
+        $scope.safeApply = function(fn) {
+            var phase = this.$root.$$phase;
+            if (phase == '$apply' || phase == '$digest') {
+                if (fn && (typeof(fn) === 'function')) {
+                    fn();
+                }
+            } else {
+                this.$apply(fn);
+            }
+        };
+
+         $scope.obj = [{
+            id:1,
+            name:"父节点",
+            parentId:null,
+            level:1,
+            node:[
+                {id:11,parentId:1,name:"节点1",level:2},
+                {id:12,parentId:1,name:"节点2",level:2,node:[
+                    {id:111,parentId:12,name:"子节点1",level:3},
+                    {id:112,parentId:12,name:"子节点2",level:3,node:[
+                        {id:1113,parentId:112,name:"子子节点1",level:4}
+                    ]}
+                ]},
+                {id:13,parentId:1,name:"节点3",level:2}
+            ]
+        }];
+
+        $scope.objArray = [];
+        function changeArray(node) {
+            var postData = {};
+            postData = {id:node.id,parentId:node.parentId,name:node.name,level:node.level};
+            if(node.node){
+                postData = angular.extend(postData,{node:node.node});
+                $scope.objArray.push(postData);
+                angular.forEach(node.node,function (data) {
+                    if(data.node){
+                        changeArray(data);
+                    }else{
+                        $scope.objArray.push({id:data.id,parentId:data.parentId,name:data.name,level:data.level,node:data.node});
+                    }
+                });
+            }else{
+                $scope.objArray.push(postData);
+            }
+        }
+
+        angular.forEach($scope.obj,function (data) {
+            changeArray(data);
+        });
+
+        console.log($scope.objArray);
+        angular.forEach($scope.objArray,function (data) {
+            data.style = {'padding-left': (data.level*20)+"px"}
+        })
+
+
+        $scope.selectId = [];
+        $scope.selectItem = [];
+
+        function select(item) {
+            var num =  $scope.selectId.indexOf(item.id);
+            if(num==-1){
+                $scope.selectId.push(item.id);
+                $scope.selectItem.push(item);
+            }
+            if(item.node){
+                angular.forEach($scope.objArray,function (data) {
+                    if(data.parentId==item.id){
+                        select(data);
+                    }
+                })
+            }
+        }
+
+
+        function unSelect(item,selectItem,selectId) {
+            var num =  $scope.selectId.indexOf(item.id);
+            if(num!=-1){
+                $scope.selectItem[num].check= false;
+            }
+            if(item.node){
+                angular.forEach($scope.selectItem,function (data) {
+                    if(data.parentId==item.id){
+                        var num2 =  $scope.selectId.indexOf(data.id);
+                        if(num2!=-1){
+                            unSelect(data);
+                        }
+                    }
+                })
+            }
+        }
+
+        function unSelectParent(item) {
+            angular.forEach($scope.selectItem,function (data) {
+                if(data.id == item.parentId){
+                    var num = $scope.selectId.indexOf(data.id);
+                    if(num!=-1){
+                        $scope.selectItem[num].check= false;
+                        unSelectParent(data);
+                    }
+                }
+            })
+        }
+
+
+        $scope.checkBoxClick = function (item) {
+            var num =  $scope.selectId.indexOf(item.id);
+            if(num==-1){
+                $scope.safeApply(select(item));
+            }else{
+                $scope.safeApply(unSelectParent(item));
+                $scope.safeApply(unSelect(item));
+                angular.forEach($scope.objArray,function (data) {
+                    if(data.check===false){
+                        var num = $scope.selectId.indexOf(data.id);
+                        if(num!=-1){
+                            $scope.selectId.splice(num,1);
+                            $scope.selectItem.splice(num,1);
+                        }
+                    }
+                    delete data.check;
+                });
+            }
+            console.log($scope.selectItem);
+        }
+    }])
+</script>
+</body>
+</html>
