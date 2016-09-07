@@ -40,13 +40,30 @@
     </div>
 
 <script>
+
+    /**
+     * 使用angular.bootstrap完成模块的手动
+     */
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["app"]);
     });
     var app = angular.module("app",[]);
 
 
+    /**
+     * mainCtrl 控制器
+     */
     app.controller('mainCtrl',['$scope',function ($scope) {
+        //============================变量====================================
+        $scope.objArray = [];//用于记录转化后树的数组
+        $scope.selectId = [];//用于记录选中的id
+        $scope.selectItem = [];//用于记录选中的数组
+
+        //=============================函数===================================
+        /**
+         * 安全$apply
+         * @param fn 需要执行的方法，如果没$apply的会自动$apply，如果有则不用
+         */
         $scope.safeApply = function(fn) {
             var phase = this.$root.$$phase;
             if (phase == '$apply' || phase == '$digest') {
@@ -58,11 +75,15 @@
             }
         };
 
+        /**
+         * 模拟请求到的树
+         * @type {*[]}
+         */
          $scope.obj = [{
-            id:1,
-            name:"父节点",
-            parentId:null,
-            level:1,
+            id:1,//id
+            name:"父节点",//名字
+            parentId:null,//上一级的id
+            level:1,//层级
             node:[
                 {id:11,parentId:1,name:"节点1",level:2},
                 {id:12,parentId:1,name:"节点2",level:2,node:[
@@ -72,15 +93,24 @@
                     ]}
                 ]},
                 {id:13,parentId:1,name:"节点3",level:2}
-            ]
+            ]//节点
         }];
 
-        $scope.objArray = [];
+
+        /**
+         * 用于将$scope.obj整理成$scope.objArray
+         * @param node
+         */
         function changeArray(node) {
+            /**用于记录需要保存的对象*/
             var postData = {};
+            /**第一项默认保存，排序的时候*/
             postData = {id:node.id,parentId:node.parentId,name:node.name,level:node.level};
+            //如果有节点
             if(node.node){
+                //如果包含node要加上node
                 postData = angular.extend(postData,{node:node.node});
+                //然后把对象push进树的数组中
                 $scope.objArray.push(postData);
                 angular.forEach(node.node,function (data) {
                     if(data.node){
@@ -98,14 +128,12 @@
             changeArray(data);
         });
 
-        console.log($scope.objArray);
         angular.forEach($scope.objArray,function (data) {
             data.style = {'padding-left': (data.level*20)+"px"}
         })
 
 
-        $scope.selectId = [];
-        $scope.selectItem = [];
+
 
         function select(item) {
             var num =  $scope.selectId.indexOf(item.id);
