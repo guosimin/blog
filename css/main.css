@@ -98,3 +98,40 @@ input[type="submit"]{-webkit-appearance: none;outline: 0;}
 @media only screen and (min-width: 100px) and (max-width: 450px){
     .word-list li{width: 100%;}
 }
+
+/*作品*/
+.title-prowork-wrap{padding-top: 10px}
+.title-prowork{width: 100%; text-align: center; }
+.title-prowork a{font-weight: normal;font-size: 15px; margin: 0 16px; }
+.title-prowork .on{color: #027A10;text-decoration: underline;}
+.main-prowork-bg{background: #fff; box-shadow: 0 0 6px #ccc;}
+.main-prowork{width: 100%;}
+.con-prowork ul{padding: 0px 0 80px;}
+.con-prowork li{position: relative; float: left; overflow: hidden; border: 1px solid #aaa; margin: 10px 0; width: 32%; height: 225px; box-sizing: border-box; -moz- box-sizing: border-box; -webkit-box-sizing: border-box; text-align: center;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.con-prowork .begin{-webkit-animation: proworkbeign 0.5s forwards;}
+.con-prowork .end{-webkit-animation: proworkend 0.5s forwards;}
+@-webkit-keyframes proworkbeign{
+    0% { -webkit-transform: rotateX(0);}
+    100% { -webkit-transform: rotateX(-90deg); }
+}
+@-webkit-keyframes proworkend{
+    0% { -webkit-transform: rotateX(-90deg); }
+    100% { -webkit-transform: rotateX(0);}
+}
+.con-prowork .con{display: none; position: absolute; left: 0; bottom: 0; text-align: left; background: rgba(0,0,0,0.8); width: 100%; color: #fff; padding: 10px 0;}
+.con-prowork .con>div{padding: 0 15px; line-height: 25px;}
+.con-prowork .con>div:nth-child(2){font-size: 12px;}
+.con-prowork li:hover .con{display: block;}
+.con-prowork .nth2{margin-left: 2%; margin-right: 2%;}
+.img-prowork{min-width: 100%; min-height: 100%; max-height: 100%;}
+.con-prowork .con img{position: absolute; bottom: 0; right: 0; width: 30%; border: 5px solid rgba(0,0,0,0.8);}
