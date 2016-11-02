@@ -9,13 +9,14 @@
     <div class="has-hd">
         <div class="clear wrap-m margin-t-m page-wrap">
             <div class="clear page-header">
-                <h2 class="fl page-title">
+                <h2 class="page-title">
                     {{ page.title }}
+                    <p class="describe">
+                        <span>发布于</span>
+                        <span class="date">{{ page.date | date: "%Y %D"}}</span>
+                    </p>
                 </h2>
-                <p class="fr describe">
-                    <span>发布于</span>
-                    <span class="date">{{ page.date | date: "%Y %D"}}</span>
-                </p>
+
             </div>
             <div class="con">
                 {{content}}

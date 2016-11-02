@@ -19,4 +19,9 @@ tags: ["jekyll","博客"]
         <p>解决办法：</p>
         <p class="text-orange">如果不在_config.yml配置，容易出现报错，特别是我还配置了描述在文章中，所以最好配置一下，本博客文章地址配置：permalink: /:title.html，然后页面上加上绝对地址给它:{ { site.baseurl } }{ { post.url } }或{ { post.url | prepend: site.baseurl} }</p>
     </div>
+    <div class="keng">
+        <p>c.部署的时候原本我是配在blog文件下，部署到自己地址时，路径不好写,所以这时重新修改地址</p>
+        <p>解决办法：</p>
+        <p class="text-orange">重新配置_config.yml里面的baseurl路径为""</p>
+    </div>
 </div>

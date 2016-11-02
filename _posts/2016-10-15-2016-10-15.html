@@ -1,0 +1,66 @@
+---
+layout: post
+title:  "控制台显示图片以及为文字加样式"
+date:    2016-10-15 00:19:13 +0800
+categories: "今天无聊逛逛商城，突然发现别人的控制台特别炫酷.在正常模式下，一般只能向console 控制台输出简单的文字信息..."
+tags: ["chrome"]
+---
+<div class="show-content"><p>在正常模式下，一般只能向console 控制台输出简单的文字信息。其实现在chrome可以输出更多。</p>
+    <p>下面这张是我无意之中打开天猫的console看到的。</p>
+    <div class="image-package imagebubble" widget="ImageBubble">
+        <img src="http://upload-images.jianshu.io/upload_images/2885405-f38583984a4699e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+             data-original-src="http://upload-images.jianshu.io/upload_images/2885405-f38583984a4699e0.png?imageMogr2/auto-orient/strip%7CimageView2/2"
+             class="imagebubble-image"><br>
+    </div>
+    <p>为了把信息输出得更优雅更便于阅读，除了cosole.log()方法外还可以调用 cosole.warn() 来输出警告信息，在控制台中出来的效果如下：</p>
+    <div class="image-package imagebubble" widget="ImageBubble">
+        <img src="http://upload-images.jianshu.io/upload_images/2885405-22cc0b2a44575401.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+             data-original-src="http://upload-images.jianshu.io/upload_images/2885405-22cc0b2a44575401.png?imageMogr2/auto-orient/strip%7CimageView2/2"
+             class="imagebubble-image"><br>
+    </div>
+    <p>在输出信息前面会有一个带感叹号的黄色三角警告符号。似乎比一般的console信息要友好得多了。虽然图标是黄色的，但输出的文字仍然是黑色。<br>另外经常用到的是输出错误信息。可以通过调用console.erro()
+        来实现。<br>
+        输出的效果如下：</p>
+    <div class="image-package imagebubble" widget="ImageBubble">
+        <img src="http://upload-images.jianshu.io/upload_images/2885405-b51998c7b4bb8c88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+             data-original-src="http://upload-images.jianshu.io/upload_images/2885405-b51998c7b4bb8c88.png?imageMogr2/auto-orient/strip%7CimageView2/2"
+             class="imagebubble-image"><br>
+    </div>
+    <p>
+        <br>
+        信息前面会出现一个带叉的红色圆形图标。<br>这个效果要比警告信息更友好了，字体颜色成红色了。<br>要更牛叉莫过于对文字应用样式。而现在这一特性已经在谷歌浏览器里实现了。<br>在Chrome的开发者工具里，console
+        可以加样式，可以显示缤纷的颜色，甚至图片。简直爽翻了。<br>具体来说，是可以对输出到console控制台的文字进行CSS控制。<br>格式如下：<br>console.log("%c需要输出的信息 ", "css
+        代码");
+    </p>
+    <p> 1.3D Text:<br>
+        console.log("%c3D Text"," text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0
+        5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0
+        5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15);font-size:5em")<br>2.Colorful
+        CSS<br><br>console.log("%cColorful CSS","background: rgba(252,234,187,1);background:
+        -moz-linear-gradient(left, rgba(252,234,187,1) 0%, rgba(175,250,77,1) 12%, rgba(0,247,49,1) 28%,
+        rgba(0,210,247,1) 39%,rgba(0,189,247,1) 51%, rgba(133,108,217,1) 64%, rgba(177,0,247,1) 78%, rgba(247,0,189,1)
+        87%, rgba(245,22,52,1) 100%);background: -webkit-gradient(left top, right top, color-stop(0%,
+        rgba(252,234,187,1)), color-stop(12%, rgba(175,250,77,1)), color-stop(28%, rgba(0,247,49,1)), color-stop(39%,
+        rgba(0,210,247,1)), color-stop(51%, rgba(0,189,247,1)), color-stop(64%, rgba(133,108,217,1)), color-stop(78%,
+        rgba(177,0,247,1)), color-stop(87%, rgba(247,0,189,1)), color-stop(100%, rgba(245,22,52,1)));background:
+        -webkit-linear-gradient(left, rgba(252,234,187,1) 0%, rgba(175,250,77,1) 12%, rgba(0,247,49,1) 28%,
+        rgba(0,210,247,1) 39%, rgba(0,189,247,1) 51%, rgba(133,108,217,1) 64%, rgba(177,0,247,1) 78%, rgba(247,0,189,1)
+        87%, rgba(245,22,52,1) 100%);background: -o-linear-gradient(left, rgba(252,234,187,1) 0%, rgba(175,250,77,1)
+        12%, rgba(0,247,49,1) 28%, rgba(0,210,247,1) 39%, rgba(0,189,247,1) 51%, rgba(133,108,217,1) 64%,
+        rgba(177,0,247,1) 78%, rgba(247,0,189,1) 87%, rgba(245,22,52,1) 100%);background: -ms-linear-gradient(left,
+        rgba(252,234,187,1) 0%, rgba(175,250,77,1) 12%, rgba(0,247,49,1) 28%, rgba(0,210,247,1) 39%, rgba(0,189,247,1)
+        51%, rgba(133,108,217,1) 64%, rgba(177,0,247,1) 78%, rgba(247,0,189,1) 87%, rgba(245,22,52,1) 100%);background:
+        linear-gradient(to right, rgba(252,234,187,1) 0%, rgba(175,250,77,1) 12%, rgba(0,247,49,1) 28%,
+        rgba(0,210,247,1) 39%, rgba(0,189,247,1) 51%, rgba(133,108,217,1) 64%, rgba(177,0,247,1) 78%, rgba(247,0,189,1)
+        87%, rgba(245,22,52,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb',
+        endColorstr='#f51634', GradientType=1 );font-size:5em")<br><br>3.Rainbow Text<br>console.log('%cRainbow Text
+        ', 'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f),
+        color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9,
+        #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;');</p>
+    <p>
+        更新：在Chrome控制台输出图片<br>
+        除了上面介绍的那些炫目的文字效果外，你还可以在Chrome控制台中显示图片,自然地，显示gif这样的动态图片也是没问题的。<br>还是应用差不多的代码，只是将内容变成指定背景为图片。<br>下面是一个例子：<br>console.log("%c",
+        "padding:50px 300px;line-height:120px;background:url('<a href="http://wayouliu.duapp.com/img/tagsImg/youth.gif"
+                                                                 target="_blank">http://wayouliu.duapp.com/img/tagsImg/youth.gif</a>')
+        no-repeat;");</p>
+</div>

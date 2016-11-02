@@ -62,7 +62,7 @@ input[type="submit"]{-webkit-appearance: none;outline: 0;}
 .side .list-style1-wrap a:hover{color: red;}
 .block-style1{float: left;border: 1px solid #f5f5f5;background: #fff;padding: 20px 4%;width: 40%;box-shadow: 0 0px 2px #f2f2f2;margin-bottom: 20px;}
 .block-style1:nth-child(even){float: right;}
-.block-style1 .name{font-size: 22px;}
+.block-style1 .name{font-size: 22px;     white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .block-style1 .from{color: #999;font-size: 13px;padding: 10px 0;}
 .block-style1 .con-word{line-height: 1.8em;font-size: 13px;color: #555;border-bottom: 1px dashed #999;padding-bottom: 20px;margin-bottom: 20px;height: 69px;}
 .block-style1 .con-word p{height: 69px;overflow: hidden;}
@@ -85,6 +85,7 @@ input[type="submit"]{-webkit-appearance: none;outline: 0;}
 
 .keng{background: #f9f9f9; border: 1px solid #f5f5f5; border-radius: 5px; padding:10px; margin-top: 10px;}
 .text-orange{color: orange}
+.page-wrap .show-content p{margin-bottom: 20px;text-indent: 0px;}
 
 /*文档*/
 .word-wrap hr{margin-bottom: 40px; border:1px dashed #ccc;  }
@@ -98,6 +99,7 @@ input[type="submit"]{-webkit-appearance: none;outline: 0;}
 @media only screen and (min-width: 100px) and (max-width: 450px){
     .word-list li{width: 100%;}
 }
+
 
 /*作品*/
 .title-prowork-wrap{padding-top: 10px}
