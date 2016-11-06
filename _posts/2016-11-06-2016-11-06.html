@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "慎用 JS 中的 for (var index in items) 循环数组项"
+date:    2016-10-15 00:19:13 +0800
+categories: "之前在做项目中犯的低级错误，后来发现自己一直误会了..."
+tags: ["chrome"]
+---
+<div class="show-content"><p>JavaScript 循环数组的项，我们一般人用 for (var i = 0; i &lt; items.length; i++)，也有人用 for (var index in items)。<br>我们要慎用 for (var index in items)，为什么呢？</p>
+    <p>首先这个与 C# 中的 foreach 不一样，foreach 中的 index 表示的是项，而这里 index 是表示项索引，也就是 0、1、2、3……<br>这还不是致命的，看下面的示例：</p>
+    <div class="image-package imagebubble" widget="ImageBubble">
+        <img src="http://upload-images.jianshu.io/upload_images/2885405-d8edd33a432cf628.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-original-src="http://upload-images.jianshu.io/upload_images/2885405-d8edd33a432cf628.png?imageMogr2/auto-orient/strip%7CimageView2/2" class="imagebubble-image"><br><div class="image-caption">Paste_Image.png</div>
+    </div>
+    <p>我们看到会弹出三个对话框，分别是：0、1、copy，也就是说除了项的数值索引 0、1，还多了一个 copy，而这个 copy 就是因为 Array.prototype.copy 扩展得到的。所以说不要把 for (var index in items)  当作是 for (var i = 0; i &lt; items.length; i++) 的一种简写，二者具有不同的意义。</p>
+    <p> for in可以获取object的所有属性,包括自定义属性以及原型链属性。</p>
+    <p> hasOwnProperty()只能获取自定义属性，无法获取原型链属性。</p>
+</div>
