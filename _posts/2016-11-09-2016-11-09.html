@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "数据属性"
+date:    2016-11-09 00:19:13 +0800
+categories: "数据属性包含一个数据值的位置。在这个位置可以读取和写入值，数据属性有4个描述其行为的特性。..."
+tags: ["javascript"]
+---
+<div class="show-content"><p>数据属性包含一个数据值的位置。。在这个位置可以读取和写入值，数据属性有4个描述其行为的特性。</p>
+    <p>a.Configurable （默认值 true）<br>    表示能否通过delete删除属性，从而重新定义属性</p>
+    <p>b.Enumerable（默认值 true）<br>    表示能否通过for-in 循环返回属性值。</p>
+    <p>c.Writable（默认值 true）<br>    表示能否修改属性的值。</p>
+    <p>d.Value（默认值 undefind）<br>    包含这个属性的数据值。</p>
+    <p>var person = {<br>  name:'Nicholas'<br>}</p>
+    <p>如果要修改属性的默认特性，必须使用ECMAScript 5 的Object.defineProperty( )方法，这个方法必须接受3个参数。<br>(!!!!!!注意：在调用Object.defineProperty方法，如果不指定，则Configurable，Enumerable，Writable默认值都为flase )<br>语法：<br>Object.defineProperty(属性所在对象，属性的名字，一个描述符对象)；</p>
+    <p>如以下例子：<br>var person = {};<br>Object.defineProperty(person,'name',{<br>    writable:false，<br>    value:'Nicholas'<br>});<br>alert ( person.name);    //'Nicholas'<br>person.name = 'Greg';<br>alert ( person.name);    //'Nicholas'</p>
+    <p>这个例子创建了一个名为name的属性，不过他的值是只读的，不可修改。如果尝试去指定新值，在非严格模式下，赋值操作被忽略，严格模式下会抛出错误。</p>
+    <p>类似的规则也适用于不可配置的属性。<br>var person = {};<br>Object.defineProperty(person,'name',{<br>    writable:false.<br>    value:'Nicholas'<br>});<br>alert ( person.name);    //'Nicholas'<br>delete person.name；<br>alert ( person.name);    //'Nicholas'</p>
+    <p>我们可以重复调用Object.defineProperty()方法去修改同一个属性，但在吧configurable特性设置为false之后就会有限制了。</p>
+    <p>————————————————————————————————————————————————<br>*ie8 是第一个兼容Object.defineProperty()方法的浏览器（但是有比较严重的限制，建议不要在ie8使用）</p>
+</div>
