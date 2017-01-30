@@ -1,0 +1,76 @@
+*{padding: 0; margin: 0; font-family: "Microsoft YaHei"}
+body{
+    color:#333;
+}
+ul,li{list-style: none;}
+a{text-decoration: none;}
+.main{width: 1024px; margin:0 auto;}
+.clear{zoom: 1}
+.clear:after{display: block;content: '';clear: both;}
+.fl{ float: left;}
+.fr{float: right;}
+
+.hd-link-nav{padding:8px 10px;}
+.hd-link-nav a{float:left; color: #999; border-right: 1px solid #999;padding:0 10px; font-size: 13px; line-height: 12px;}
+.hd-link-nav a:last-child{border-right: 0; padding-right: 0;}
+.hd-link-nav a:hover{color: #E53B11}
+
+.logo{overflow: hidden; text-indent: -9999px; width: 180px; height: 60px; background: url("../img/logo.png") no-repeat 0 0; background-size: 180px auto;  margin-left: 20px;}
+.nav-wrap{ min-width: 1024px; border-bottom: 2px solid #000000; padding-top: 10px;}
+.nav-wrap .nav-title{background: #E53B11; color: #fff; width: 250px; text-align: center;padding: 8px 0; margin-right: 60px;}
+.nav-wrap .nav li{font-weight: bold; font-size: 16px; display:inline-block; padding: 8px 30px;}
+.nav-wrap .nav a{color: #333;}
+.nav-wrap .nav a:hover{color: #E53B11;}
+
+.banner-wrap{ min-width: 1024px;overflow: hidden;height: 471px;}
+.banner-main{position: relative;}
+.banner-main ul{position: absolute; top: 0; left: -438px;height: 471px; overflow: hidden; }
+.banner-main ul img{width: 1900px;}
+.banner-main .menu{position: absolute; color: #fff; top: 0; left:0; height: 471px; background: #000; width: 250px; opacity: 0.7;}
+.banner-main .menu li{height: 118px; border-bottom: 1px solid #333; padding-left: 40px; padding-top: 30px; box-sizing: border-box;}
+.banner-main .menu span{display: inline-block; font-size: 12px; padding: 0 5px;line-height: 12px;border-left: 1px solid #fff;}
+.banner-main .menu span:first-child{padding-left: 0; border: 0;}
+.banner-main .menu .title{margin-bottom: 5px;}
+.banner-main .menu a,.banner-main .menu a:visited{color: #fff;}
+.banner-main .menu a:hover{text-decoration: underline;}
+
+.hot-server-warp{padding-top: 50px;text-align: center;}
+.hot-server-warp .title{ font-size: 30px; font-weight: bold; padding-bottom: 20px;}
+.hot-server-main li{float: left; border: 2px solid #f0f0f0; width: 30%; padding: 20px; box-sizing: border-box;}
+.hot-server-main li:nth-child(2){margin: 0 5%;}
+.hot-server-main .hot-server-icon{width: 110px; height: 110px; display: inline-block; background: url("../img/icon.jpg") no-repeat 0 0;}
+.hot-server-main .hot-server-icon1{background-position: 0 0;}
+.hot-server-main .hot-server-icon2{background-position: 0 -116px;}
+.hot-server-main .hot-server-icon3{background-position: 0 -240px;}
+.hot-server-main .type-name{font-size: 20px; font-weight: bold; padding: 30px 0 20px;}
+.hot-server-main .content{font-size: 13px; padding-bottom: 20px;}
+.hot-server-main .money{font-size: 26px; color: #E53B11; padding-right: 5px;}
+.hot-server-main button{background: #E53B11; color: #fff; box-shadow: none; border: 0; width: 45%; padding: 5px 0; outline: none; cursor: pointer;}
+
+.why-select-wrap{ margin-top: 80px;padding: 80px 0; color: #000; border-top: 1px dashed #999;}
+.why-select-wrap .title{font-size: 30px; font-weight: bold;  text-align: center; padding-bottom: 50px;}
+.why-select-wrap dl{float: left; width: 30%;}
+.why-select-wrap dl:nth-child(2){margin: 0 5%;}
+.why-select-wrap dt{position: relative; height: 102px; padding-left: 120px; padding-top: 20px; line-height: 28px; font-weight: bold; padding-bottom: 5px;}
+.why-select-wrap .why-select-icon{position: absolute; top:0; left: 0; display: inline-block; width: 100px; height: 102px; background: url("../img/why-icon.png") no-repeat 0 0;}
+.why-select-wrap .why-select-icon1{background-position: -5px -4px;}
+.why-select-wrap .why-select-icon2{background-position: -5px -120px;}
+.why-select-wrap .why-select-icon3{background-position: -5px -244px;}
+.why-select-wrap dd{font-size: 14px; line-height: 23px;}
+
+
+
+.ft-wrap{ min-width: 1024px; background: #333; color: #fff; padding: 50px 0;}
+.ft-wrap a{padding-right: 20px;}
+.ft-wrap a,.ft-wrap a:visited{color: #fff;}
+.ft-wrap dl{float: left;width: 25%; box-sizing: border-box;}
+.ft-wrap dt{padding-bottom: 10px;}
+.ft-wrap dd{ font-size: 13px; line-height: 25px;}
+.ft-wrap a:hover{text-decoration: underline;}
+
+/*
+li{display: block;width: 300px; height: 150px;}
+.li1{background: url("../img/angularjs.jpg?__sprite") no-repeat;}
+.li2{background: url("../img/chart.js.png?__sprite") no-repeat;}
+.li3{background: url("../img/jekyll.png?__sprite") no-repeat;}
+.li4{background: url("../img/gulpjs.png?__sprite") no-repeat;}*/
