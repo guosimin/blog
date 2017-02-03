@@ -9,6 +9,15 @@ a{text-decoration: none;}
 .clear:after{display: block;content: '';clear: both;}
 .fl{ float: left;}
 .fr{float: right;}
+.mt-10{margin-top: 10px;}
+.mt-20{margin-top: 20px;}
+.mt-30{margin-top: 30px;}
+.mt-40{margin-top: 40px;}
+.mb-10{margin-bottom: 10px;}
+.mb-20{margin-bottom: 20px;}
+.mb-30{margin-bottom: 30px;}
+.mb-40{margin-bottom: 40px;}
+.text-center{text-align: center;}
 
 .hd-link-nav{padding:8px 10px;}
 .hd-link-nav a{float:left; color: #999; border-right: 1px solid #999;padding:0 10px; font-size: 13px; line-height: 12px;}
@@ -17,22 +26,29 @@ a{text-decoration: none;}
 
 .logo{overflow: hidden; text-indent: -9999px; width: 180px; height: 60px; background: url("../img/logo.png") no-repeat 0 0; background-size: 180px auto;  margin-left: 20px;}
 .nav-wrap{ min-width: 1024px; border-bottom: 2px solid #000000; padding-top: 10px;}
-.nav-wrap .nav-title{background: #E53B11; color: #fff; width: 250px; text-align: center;padding: 8px 0; margin-right: 60px;}
+.nav-wrap .nav-title{background: #E53B11; color: #fff; width: 250px; text-align: center;padding: 8px 0; margin-right: 30px;}
 .nav-wrap .nav li{font-weight: bold; font-size: 16px; display:inline-block; padding: 8px 30px;}
 .nav-wrap .nav a{color: #333;}
 .nav-wrap .nav a:hover{color: #E53B11;}
 
 .banner-wrap{ min-width: 1024px;overflow: hidden;height: 471px;}
-.banner-main{position: relative;}
-.banner-main ul{position: absolute; top: 0; left: -438px;height: 471px; overflow: hidden; }
-.banner-main ul img{width: 1900px;}
-.banner-main .menu{position: absolute; color: #fff; top: 0; left:0; height: 471px; background: #000; width: 250px; opacity: 0.7;}
-.banner-main .menu li{height: 118px; border-bottom: 1px solid #333; padding-left: 40px; padding-top: 30px; box-sizing: border-box;}
-.banner-main .menu span{display: inline-block; font-size: 12px; padding: 0 5px;line-height: 12px;border-left: 1px solid #fff;}
-.banner-main .menu span:first-child{padding-left: 0; border: 0;}
-.banner-main .menu .title{margin-bottom: 5px;}
-.banner-main .menu a,.banner-main .menu a:visited{color: #fff;}
-.banner-main .menu a:hover{text-decoration: underline;}
+.banner-main,.info-main{position: relative;}
+.banner-main .banner{position: absolute; top: 0; left: -438px;height: 471px; overflow: hidden; }
+.banner-main .banner img{width: 1900px;}
+
+.menu{position: absolute; color: #fff; top: 0; left:0; height: 471px; background: #000; width: 250px; opacity: 0.7;}
+.menu li{height: 118px; border-bottom: 1px solid #333; padding-left: 40px; padding-top: 30px; box-sizing: border-box;}
+.menu span{display: inline-block; font-size: 12px; padding: 0 5px;line-height: 12px;border-left: 1px solid #fff;}
+.menu span:first-child{padding-left: 0; border: 0;}
+.menu .title{margin-bottom: 5px;}
+.menu a,.banner-main .menu a:visited{color: #fff;}
+.menu a:hover{text-decoration: underline;}
+
+
+/*.info-main .menu{opacity: 1}*/
+.info-main{padding-left: 265px; box-sizing: border-box; padding-top: 15px; padding-bottom: 15px;}
+.info-content{line-height: 35px; border: 1px dashed #ccc; padding: 20px;}
+.info-content dl{background: #f0f0f0; padding: 2px 20px; color: #333; border-radius: 10px;}
 
 .hot-server-warp{padding-top: 50px;text-align: center;}
 .hot-server-warp .title{ font-size: 30px; font-weight: bold; padding-bottom: 20px;}
