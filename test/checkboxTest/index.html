@@ -54,32 +54,12 @@
      * mainCtrl 控制器
      */
     app.controller('mainCtrl',['$scope',function ($scope) {
-        //============================变量====================================
-        $scope.objArray = [];//用于记录转化后树的数组
-        $scope.selectId = [];//用于记录选中的id
-        $scope.selectItem = [];//用于记录选中的数组
-
-        //=============================函数===================================
-        /**
-         * 安全$apply
-         * @param fn 需要执行的方法，如果没$apply的会自动$apply，如果有则不用
-         */
-        $scope.safeApply = function(fn) {
-            var phase = this.$root.$$phase;
-            if (phase == '$apply' || phase == '$digest') {
-                if (fn && (typeof(fn) === 'function')) {
-                    fn();
-                }
-            } else {
-                this.$apply(fn);
-            }
-        };
-
+        //============================数据源====================================
         /**
          * 模拟请求到的树
          * @type {*[]}
          */
-         $scope.obj = [{
+        $scope.obj = [{
             id:1,//id
             name:"父节点",//名字
             parentId:null,//上一级的id
@@ -96,6 +76,30 @@
             ]//节点
         }];
 
+
+        //============================变量====================================
+        $scope.objArray = [];//用于记录转化后树的数组
+        $scope.selectId = [];//用于记录选中的id
+        $scope.selectItem = [];//用于记录选中的数组
+
+
+        //=============================工具函数===================================
+        /**
+         * 安全$apply
+         * @param fn 需要执行的方法，如果没$apply的会自动$apply，如果有则不用
+         */
+        $scope.safeApply = function(fn) {
+            var phase = this.$root.$$phase;
+            if (phase == '$apply' || phase == '$digest') {
+                if (fn && (typeof(fn) === 'function')) {
+                    fn();
+                }
+            } else {
+                this.$apply(fn);
+            }
+        };
+
+        //=============================函数===================================
 
         /**
          * 用于将$scope.obj整理成$scope.objArray
@@ -124,13 +128,7 @@
             }
         }
 
-        angular.forEach($scope.obj,function (data) {
-            changeArray(data);
-        });
 
-        angular.forEach($scope.objArray,function (data) {
-            data.style = {'padding-left': (data.level*20)+"px"}
-        })
 
 
 
@@ -180,14 +178,21 @@
             })
         }
 
-
+        /**
+         * 点击checkbox
+         **/
         $scope.checkBoxClick = function (item) {
             var num =  $scope.selectId.indexOf(item.id);
+            //是否已选择过的
             if(num==-1){
+                //更新选中
                 $scope.safeApply(select(item));
             }else{
+                //取消父级选择
                 $scope.safeApply(unSelectParent(item));
+                //取消当前项选择
                 $scope.safeApply(unSelect(item));
+
                 angular.forEach($scope.objArray,function (data) {
                     if(data.check===false){
                         var num = $scope.selectId.indexOf(data.id);
@@ -201,6 +206,23 @@
             }
             console.log($scope.selectItem);
         }
+
+        //=============================初始化===================================
+        (function (){
+            /**
+             * 得到$scope.objArray（数组形式的树）
+             */
+            angular.forEach($scope.obj,function (data) {
+                changeArray(data);
+            });
+
+            /**
+             * 得到树节点样式
+             */
+            angular.forEach($scope.objArray,function (data) {
+                data.style = {'padding-left': (data.level*20)+"px"}
+            });
+        })();
     }])
 </script>
 </body>
