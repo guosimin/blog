@@ -9,221 +9,36 @@
     <script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js"></script>
 </head>
 <body>
-    <div ng-controller="mainCtrl">
-        <ul ng-repeat="item in objArray">
-            <li ng-style="{{item.style}}">
-                <label>
-                    <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectId.indexOf(item.id)!=-1">
-                    {{item.name}}
-                    id:{{item.id}} - parentId:{{item.parentId}}
-                </label>
+<div ng-controller="mainCtrl">
+    <h3>树型</h3>
+    <ul ng-repeat="item in objArray">
+        <li ng-style="{{item.style}}">
+            <label>
+                <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectIds.indexOf(item.id)!=-1">
+                {{item.name}}
+                id:{{item.id}} - parentId:{{item.parentId}}
+            </label>
+        </li>
+    </ul>
+
+    <h3>选中的：</h3>
+    <div>
+        <ul>
+            <li ng-repeat="item in selectItem">
+                {{item.name}}
             </li>
         </ul>
-        选中的：
-
-        <div>
-            <ul>
-                <li ng-repeat="item in selectItem">
-                    {{item.name}}
-                </li>
-            </ul>
-        </div>
-        选中的最终节点：
-
-        <div>
-            <ul>
-                <li ng-repeat="item in selectItem" ng-hide="item.node">
-                    {{item.name}}
-                </li>
-            </ul>
-        </div>
     </div>
 
-<script>
-
-    /**
-     * 使用angular.bootstrap完成模块的手动
-     */
-    angular.element(document).ready(function() {
-        angular.bootstrap(document, ["app"]);
-    });
-    var app = angular.module("app",[]);
-
-
-    /**
-     * mainCtrl 控制器
-     */
-    app.controller('mainCtrl',['$scope',function ($scope) {
-        //============================数据源====================================
-        /**
-         * 模拟请求到的树
-         * @type {*[]}
-         */
-        $scope.obj = [{
-            id:1,//id
-            name:"父节点",//名字
-            parentId:null,//上一级的id
-            level:1,//层级
-            node:[
-                {id:11,parentId:1,name:"节点1",level:2},
-                {id:12,parentId:1,name:"节点2",level:2,node:[
-                    {id:111,parentId:12,name:"子节点1",level:3},
-                    {id:112,parentId:12,name:"子节点2",level:3,node:[
-                        {id:1113,parentId:112,name:"子子节点1",level:4}
-                    ]}
-                ]},
-                {id:13,parentId:1,name:"节点3",level:2}
-            ]//节点
-        }];
-
-
-        //============================变量====================================
-        $scope.objArray = [];//用于记录转化后树的数组
-        $scope.selectId = [];//用于记录选中的id
-        $scope.selectItem = [];//用于记录选中的数组
-
-
-        //=============================工具函数===================================
-        /**
-         * 安全$apply
-         * @param fn 需要执行的方法，如果没$apply的会自动$apply，如果有则不用
-         */
-        $scope.safeApply = function(fn) {
-            var phase = this.$root.$$phase;
-            if (phase == '$apply' || phase == '$digest') {
-                if (fn && (typeof(fn) === 'function')) {
-                    fn();
-                }
-            } else {
-                this.$apply(fn);
-            }
-        };
-
-        //=============================函数===================================
-
-        /**
-         * 用于将$scope.obj整理成$scope.objArray
-         * @param node
-         */
-        function changeArray(node) {
-            //用于记录需要保存的对象
-            var postData = {};
-            //第一项默认保存，排序的时候
-            postData = {id:node.id,parentId:node.parentId,name:node.name,level:node.level};
-            //如果有节点
-            if(node.node){
-                //如果包含node要加上node
-                postData = angular.extend(postData,{node:node.node});
-                //然后把对象push进树的数组中
-                $scope.objArray.push(postData);
-                angular.forEach(node.node,function (data) {
-                    if(data.node){
-                        changeArray(data);
-                    }else{
-                        $scope.objArray.push({id:data.id,parentId:data.parentId,name:data.name,level:data.level,node:data.node});
-                    }
-                });
-            }else{
-                $scope.objArray.push(postData);
-            }
-        }
-
-
-
-
-
-
-        function select(item) {
-            var num =  $scope.selectId.indexOf(item.id);
-            if(num==-1){
-                $scope.selectId.push(item.id);
-                $scope.selectItem.push(item);
-            }
-            if(item.node){
-                angular.forEach($scope.objArray,function (data) {
-                    if(data.parentId==item.id){
-                        select(data);
-                    }
-                })
-            }
-        }
-
-
-        function unSelect(item,selectItem,selectId) {
-            var num =  $scope.selectId.indexOf(item.id);
-            if(num!=-1){
-                $scope.selectItem[num].check= false;
-            }
-            if(item.node){
-                angular.forEach($scope.selectItem,function (data) {
-                    if(data.parentId==item.id){
-                        var num2 =  $scope.selectId.indexOf(data.id);
-                        if(num2!=-1){
-                            unSelect(data);
-                        }
-                    }
-                })
-            }
-        }
-
-        function unSelectParent(item) {
-            angular.forEach($scope.selectItem,function (data) {
-                if(data.id == item.parentId){
-                    var num = $scope.selectId.indexOf(data.id);
-                    if(num!=-1){
-                        $scope.selectItem[num].check= false;
-                        unSelectParent(data);
-                    }
-                }
-            })
-        }
-
-        /**
-         * 点击checkbox
-         **/
-        $scope.checkBoxClick = function (item) {
-            var num =  $scope.selectId.indexOf(item.id);
-            //是否已选择过的
-            if(num==-1){
-                //更新选中
-                $scope.safeApply(select(item));
-            }else{
-                //取消父级选择
-                $scope.safeApply(unSelectParent(item));
-                //取消当前项选择
-                $scope.safeApply(unSelect(item));
-
-                angular.forEach($scope.objArray,function (data) {
-                    if(data.check===false){
-                        var num = $scope.selectId.indexOf(data.id);
-                        if(num!=-1){
-                            $scope.selectId.splice(num,1);
-                            $scope.selectItem.splice(num,1);
-                        }
-                    }
-                    delete data.check;
-                });
-            }
-            console.log($scope.selectItem);
-        }
-
-        //=============================初始化===================================
-        (function (){
-            /**
-             * 得到$scope.objArray（数组形式的树）
-             */
-            angular.forEach($scope.obj,function (data) {
-                changeArray(data);
-            });
-
-            /**
-             * 得到树节点样式
-             */
-            angular.forEach($scope.objArray,function (data) {
-                data.style = {'padding-left': (data.level*20)+"px"}
-            });
-        })();
-    }])
-</script>
+    <h3>选中的最终节点：</h3>
+    <div>
+        <ul>
+            <li ng-repeat="item in selectItem" ng-hide="item.node">
+                {{item.name}}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="public.js"></script>
 </body>
 </html>
