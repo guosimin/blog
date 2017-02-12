@@ -31,7 +31,11 @@ app.controller('mainCtrl', ['$scope', function ($scope) {
                 {id: 111, parentId: 12, name: "子节点1", level: 3},
                 {
                     id: 112, parentId: 12, name: "子节点2", level: 3, node: [
-                    {id: 1113, parentId: 112, name: "子子节点1", level: 4}
+                    {id: 1111, parentId: 112, name: "子子节点1", level: 4},
+                    {id: 1112, parentId: 112, name: "子子节点2", level: 4},
+                    {id: 1113, parentId: 112, name: "子子节点3", level: 4},
+                    {id: 1114, parentId: 112, name: "子子节点4", level: 4},
+                    {id: 1115, parentId: 112, name: "子子节点5", level: 4},
                 ]
                 }
             ]

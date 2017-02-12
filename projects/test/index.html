@@ -66,33 +66,11 @@
                         <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                             <span translate="aside.nav.HEADER">Component 组件</span>
                         </li>
-                        <li>
-                            <a href class="auto">
-                                <span class="pull-right text-muted">
-                                    <i class="fa fa-fw fa-angle-right text"></i>
-                                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                                </span>
-                                <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                                <span class="font-bold" translate="aside.nav.DASHBOARD">tree树选择器</span>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.mail.list">
+                                <i class="glyphicon glyphicon-tree-conifer icon text-info-lter"></i>
+                                <span class="font-bold">tree树选择器</span>
                             </a>
-                            <ul class="nav nav-sub dk">
-                                <!--<li class="nav-sub-header">
-                                    <a href>
-                                        <span translate="aside.nav.DASHBOARD">Dashboard</span>
-                                    </a>
-                                </li>-->
-                                <li ui-sref-active="active">
-                                    <a ui-sref="app.dashboard-v1">
-                                        <span>tree树选择器1</span>
-                                    </a>
-                                </li>
-                                <li ui-sref-active="active">
-                                    <a ui-sref="app.dashboard-v2">
-                                        <b class="label bg-info pull-right">N</b>
-                                        <span>tree树选择器2</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -110,7 +88,10 @@
                     <div class="col-md-12">
                         <div class="panel no-border">
                             <div class="panel-heading wrapper b-b">
-                                <h4 class="font-bold m-t-none m-b-none">tree树选择器</h4>
+                                <h4 class="font-bold m-t-none m-b-none">
+                                    <i class="glyphicon glyphicon-tree-conifer icon text-info-lter"></i>
+                                    tree树选择器
+                                </h4>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
@@ -118,12 +99,15 @@
                                         <h5 class="font-bold text-center m-b">树型</h5>
                                         <ul ng-repeat="item in objArray">
                                             <li ng-style="item.style">
-                                                <label class="i-checks">
-                                                    <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectIds.indexOf(item.id)!=-1">
-                                                    <i></i>
-                                                    {{item.name}}
-                                                    id:{{item.id}} - parentId:{{item.parentId}}
-                                                </label>
+                                                <label>
+                                                    <span class="i-checks">
+                                                        <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectIds.indexOf(item.id)!=-1">
+                                                        <i></i>
+                                                    </span>
+                                                    <span>{{item.name}}-id:{{item.id}}</span>
+                                                </label>&nbsp;&nbsp;&nbsp;
+                                                <!--<span class="glyphicon glyphicon-plus"></span>
+                                                <span class="glyphicon glyphicon-minus"></span>-->
                                             </li>
                                         </ul>
                                     </div>
@@ -132,6 +116,7 @@
                                         <div>
                                             <ul>
                                                 <li class="m-b-sm" ng-repeat="item in selectItems">
+                                                    <i class="glyphicon glyphicon-arrow-right"></i>
                                                     {{item.name}}
                                                 </li>
                                             </ul>
@@ -142,6 +127,7 @@
                                         <div>
                                             <ul>
                                                 <li class="m-b-sm" ng-repeat="item in selectItems" ng-hide="item.node">
+                                                    <i class="glyphicon glyphicon-arrow-right"></i>
                                                     {{item.name}}
                                                 </li>
                                             </ul>
