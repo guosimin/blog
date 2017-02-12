@@ -12,7 +12,7 @@
 <div ng-controller="mainCtrl">
     <h3>树型</h3>
     <ul ng-repeat="item in objArray">
-        <li ng-style="{{item.style}}">
+        <li ng-style="item.style">
             <label>
                 <input type="checkbox" ng-click="checkBoxClick(item)" ng-checked="selectIds.indexOf(item.id)!=-1">
                 {{item.name}}
