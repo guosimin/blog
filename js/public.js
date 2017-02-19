@@ -27,11 +27,12 @@ $(function() {
             var oli = $(CON_PROWORK__LI);
             var oul = $(CON_PROWORK__UL);
             oli.removeClass("begin").removeClass("end");
-            oul.eq(i).siblings().find("li").addClass("begin");
+            var elememtNum = i==1?2:1;
+            $(".page"+elememtNum).find("li").addClass("begin");
             setTimeout(function(){
-                oul.hide();
-                oul.eq(i).find("li").addClass("end")
-                oul.eq(i).show();
+                $(".page").hide();
+                $(".page"+(i+1)).find("li").addClass("end")
+                $(".page"+(i+1)).show();
             },500);
         });
     });

@@ -110,7 +110,8 @@ input[type="submit"]{-webkit-appearance: none;outline: 0;}
 .main-prowork-bg{background: #fff; box-shadow: 0 0 6px #ccc;}
 .main-prowork{width: 100%;}
 .con-prowork ul{padding: 0px 0 80px;}
-.con-prowork li{position: relative; float: left; overflow: hidden; border: 1px solid #aaa; margin: 10px 0; width: 32%; height: 225px; box-sizing: border-box; -moz- box-sizing: border-box; -webkit-box-sizing: border-box; text-align: center;
+.con-prowork hr{margin-bottom: 60px; border: 1px dashed #ccc;}
+.con-prowork li{position: relative; float: left; overflow: hidden; border: 1px solid #aaa; margin: 10px 0; width: 32%; height: 225px; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; text-align: center;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     -ms-transform: translateZ(0);
