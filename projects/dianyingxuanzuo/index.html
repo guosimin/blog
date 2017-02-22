@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title>选座</title>
+		<style type="text/css">
+			*{margin: 0; padding: 0;}
+			.clear{zoom: 1;}
+			.clear:after{display: block; clear: both; content: '';}
+			ul{margin: 0 auto; text-align: center; padding: 0 15px;}
+			ul,li{list-style: none;}
+			ul{font-size: 0;}
+			ul li{ display: inline-block; width: 30px; height: 30px; background: #0000FF; margin: 5px;}
+			#kk{-webkit-transition:all 1s; padding: 30px 0;}
+		</style>
+		<script src="http://cdn.bootcss.com/zepto/1.1.7/zepto.js"></script>
+	</head>
+	<body>
+		<div style="position: fixed; top: 0; left: 0; width: 100%; height: 45px; line-height: 45px; background: red; text-align: center; color: #fff;">
+			电影选座
+		</div>
+		<div style="padding-top: 85px;">
+			<div style="overflow: auto;">
+				<div id="kk">
+					<ul class="clear">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clear">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clear">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="clear">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("li").width(($(document).width()-10*10-60)/10);
+			});
+			
+			$(window).resize(function(){
+				$("li").width(($(document).width()-10*10-60)/10);
+			});
+			
+			var more = 1.2;
+			$(document).doubleTap(function($event){
+				console.log($event.pageX,"x");
+				console.log($event.pageY,"y");
+				if(more<2.2){
+					$("#kk").css({
+						"transform-origin":$event.pageX+" "+$event.pageY,
+						"transform":"scale("+more+")"
+					});
+					more+=0.2;
+				}
+				
+			});
+		</script>
+	</body>
+</html>
